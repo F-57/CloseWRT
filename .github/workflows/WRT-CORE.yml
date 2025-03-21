@@ -63,7 +63,7 @@ jobs:
       - name: Checkout Projects
         uses: actions/checkout@main
 
-      - name: Initialization Environment
+      - name: 初始化编译环境
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
@@ -81,7 +81,7 @@ jobs:
           sudo chown $USER:$USER /mnt/build_wrt
           sudo ln -s /mnt/build_wrt $GITHUB_WORKSPACE/wrt
 
-      - name: Initialization Values
+      - name: 初始化配置
         run: |
           export WRT_DATE=$(TZ=UTC-8 date +"%y.%m.%d_%H.%M.%S")
           export WRT_MARK=$(echo $GITHUB_REPOSITORY | cut -d '/' -f 1)
@@ -93,7 +93,7 @@ jobs:
           echo "WRT_VER=$WRT_VER" >> $GITHUB_ENV
           echo "WRT_TARGET=$WRT_TARGET" >> $GITHUB_ENV
 
-      - name: Clone Code
+      - name: 下载固件源码
         run: |
           git clone --depth=1 --single-branch --branch $WRT_BRANCH $WRT_REPO ./wrt/
 
@@ -111,11 +111,11 @@ jobs:
             sed -i '/.cn\//d; /tencent/d; /aliyun/d' "$PROJECT_MIRRORS_FILE"
           fi
 
-      - name: Check Scripts
+      - name: 检查脚本
         run: |
           find ./ -maxdepth 3 -type f -iregex ".*\(txt\|sh\)$" -exec dos2unix {} \; -exec chmod +x {} \;
 
-      - name: Check Caches
+      - name: 检查缓存
         id: check-cache
         if: env.WRT_TEST != 'true'
         uses: actions/cache@main
@@ -127,7 +127,7 @@ jobs:
             ./wrt/staging_dir/host*
             ./wrt/staging_dir/tool*
 
-      - name: Update Caches
+      - name: 更新缓存
         if: env.WRT_TEST != 'true'
         run: |
           if [ -d "./wrt/staging_dir" ]; then
@@ -151,21 +151,21 @@ jobs:
             echo "caches cleanup done!"
           fi
 
-      - name: Update Feeds
+      - name: 更新 & 安装 feeds
         run: |
           cd ./wrt/
 
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
-      - name: Custom Packages
+      - name: 加载Packages_sh & Handles_sh
         run: |
           cd ./wrt/package/
 
           $GITHUB_WORKSPACE/Scripts/Packages.sh
           $GITHUB_WORKSPACE/Scripts/Handles.sh
 
-      - name: Custom Settings
+      - name: 加载config & Settings_sh
         run: |
           cd ./wrt/
 
@@ -177,21 +177,21 @@ jobs:
 
           make defconfig -j$(nproc) && make clean -j$(nproc)
 
-      - name: Download Packages
+      - name: 下载软件包
         if: env.WRT_TEST != 'true'
         run: |
           cd ./wrt/
 
           make download -j$(nproc)
 
-      - name: Compile Firmware
+      - name: 编译固件
         if: env.WRT_TEST != 'true'
         run: |
           cd ./wrt/
 
           make -j$(nproc) || make -j$(nproc) V=s
 
-      - name: Machine Information
+      - name: 查看机器使用情况
         run: |
           cd ./wrt/
 
@@ -203,7 +203,7 @@ jobs:
           du -h --max-depth=1
           echo "======================="
 
-      - name: Package Firmware
+      - name: 打包固件
         run: |
           cd ./wrt/ && mkdir ./upload/
 
@@ -228,7 +228,7 @@ jobs:
 
           echo "WRT_KVER=${KVER:-none}" >> $GITHUB_ENV
 
-      - name: Release Firmware
+      - name: 固件发布
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{env.WRT_CONFIG}}_${{env.WRT_VER}}_${{env.WRT_DATE}}
