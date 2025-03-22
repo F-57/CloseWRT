@@ -38,4 +38,5 @@ fi
 sed -i '/TARGET.*mediatek/d' ./.config
 sed -i '/TARGET_MULTI_PROFILE/d' ./.config
 sed -i '/TARGET_PER_DEVICE_ROOTFS/d' ./.config
+sed -i '/usb/d' ./.config
 cat $GITHUB_WORKSPACE/Config/$WRT_CONFIG.txt >> .config
