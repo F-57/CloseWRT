@@ -169,11 +169,13 @@ jobs:
         run: |
           cd ./wrt/
 
-          find ./defconfig -type f -iname "*$WRT_CONFIG*" -exec cat {} + | sort | uniq > .config
+          # find ./defconfig -type f -iname "*$WRT_CONFIG*" -exec cat {} + | sort | uniq > .config
+          cp ./defconfig/mt7986-ax6000.config .config
 
           $GITHUB_WORKSPACE/Scripts/Settings.sh
 
           cat $GITHUB_WORKSPACE/Config/GENERAL.txt >> .config
+          
 
           make defconfig -j$(nproc) && make clean -j$(nproc)
 
