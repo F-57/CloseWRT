@@ -163,7 +163,7 @@ jobs:
         run: |
           cd ./wrt/
 
-          cp ./defconfig/mt7986-ax6000.config .config
+          cp $GITHUB_WORKSPACE/Config/AX6000.txt .config
 
           $GITHUB_WORKSPACE/Scripts/Settings.sh
           
