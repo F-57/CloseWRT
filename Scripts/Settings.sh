@@ -11,9 +11,9 @@ WIFI_FILE="./package/mtk/applications/mtwifi-cfg/files/mtwifi.sh"
 #修改WIFI名称
 sed -i "s/ImmortalWrt/$WRT_SSID/g" $WIFI_FILE
 #修改WIFI加密
-#sed -i "s/encryption=.*/encryption='psk2+ccmp'/g" $WIFI_FILE
+sed -i "s/encryption=.*/encryption='psk-mixed'/g" $WIFI_FILE
 #修改WIFI密码
-#sed -i "/set wireless.default_\${dev}.encryption='psk2+ccmp'/a \\\t\t\t\t\t\set wireless.default_\${dev}.key='$WRT_WORD'" $WIFI_FILE
+sed -i "/set wireless.default_\${dev}.encryption='psk-mixed'/a \\\t\t\t\t\t\set wireless.default_\${dev}.key='$WRT_WORD'" $WIFI_FILE
 
 CFG_FILE="./package/base-files/files/bin/config_generate"
 #修改默认IP地址
@@ -22,21 +22,5 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/$WRT_IP/g" $CFG_FILE
 sed -i "s/hostname='.*'/hostname='$WRT_NAME'/g" $CFG_FILE
 
 #配置文件修改
-echo "CONFIG_PACKAGE_luci=y" >> ./.config
-echo "CONFIG_LUCI_LANG_zh_Hans=y" >> ./.config
-echo "CONFIG_PACKAGE_luci-theme-$WRT_THEME=y" >> ./.config
-echo "CONFIG_PACKAGE_luci-app-$WRT_THEME-config=y" >> ./.config
-echo "CONFIG_TARGET_OPTIONS=y" >> ./.config
-echo "CONFIG_TARGET_OPTIMIZATION=\"-O2 -pipe -march=armv8-a+crypto+crc -mcpu=cortex-a53+crypto+crc -mtune=cortex-a53\"" >> ./.config
-
-#手动调整的插件
-if [ -n "$WRT_PACKAGE" ]; then
-	echo -e "$WRT_PACKAGE" >> ./.config
-fi
-
-#调整mtk系列配置
-sed -i '/TARGET.*mediatek/d' ./.config
-sed -i '/TARGET_MULTI_PROFILE/d' ./.config
-sed -i '/TARGET_PER_DEVICE_ROOTFS/d' ./.config
-sed -i '/usb/d' ./.config
-cat $GITHUB_WORKSPACE/Config/$WRT_CONFIG.txt >> .config
+echo "CONFIG_LUCI_LANG_en=y" >> ./.config
+echo "CONFIG_LUCI_LANG_zh-cn=y" >> ./.config
