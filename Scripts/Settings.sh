@@ -24,3 +24,5 @@ sed -i "s/hostname='.*'/hostname='$WRT_NAME'/g" $CFG_FILE
 #配置文件修改
 echo "CONFIG_LUCI_LANG_en=y" >> ./.config
 echo "CONFIG_LUCI_LANG_zh-cn=y" >> ./.config
+
+./scripts/feeds install node-argon2
