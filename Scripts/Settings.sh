@@ -22,7 +22,15 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/$WRT_IP/g" $CFG_FILE
 sed -i "s/hostname='.*'/hostname='$WRT_NAME'/g" $CFG_FILE
 
 #配置文件修改
-echo "CONFIG_LUCI_LANG_en=y" >> ./.config
-echo "CONFIG_LUCI_LANG_zh-cn=y" >> ./.config
+echo "CONFIG_PACKAGE_luci=y" >> ./.config
+echo "CONFIG_LUCI_LANG_zh_Hans=y" >> ./.config
+echo "CONFIG_PACKAGE_luci-app-$WRT_THEME-config=y" >> ./.config
+echo "CONFIG_TARGET_OPTIONS=y" >> ./.config
+echo "CONFIG_TARGET_OPTIMIZATION=\"-O2 -pipe -march=armv8-a+crypto+crc -mcpu=cortex-a53+crypto+crc -mtune=cortex-a53\"" >> ./.config
+
+sed -i '/TARGET.*mediatek/d' ./.config
+sed -i '/TARGET_MULTI_PROFILE/d' ./.config
+sed -i '/TARGET_PER_DEVICE_ROOTFS/d' ./.config
+cat $GITHUB_WORKSPACE/Config/$WRT_CONFIG.txt >> .config
 
 ./scripts/feeds install node-argon2
