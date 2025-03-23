@@ -28,9 +28,11 @@ echo "CONFIG_PACKAGE_luci-app-$WRT_THEME-config=y" >> ./.config
 echo "CONFIG_TARGET_OPTIONS=y" >> ./.config
 echo "CONFIG_TARGET_OPTIMIZATION=\"-O2 -pipe -march=armv8-a+crypto+crc -mcpu=cortex-a53+crypto+crc -mtune=cortex-a53\"" >> ./.config
 
+#调整mtk系列配置
 sed -i '/TARGET.*mediatek/d' ./.config
 sed -i '/TARGET_MULTI_PROFILE/d' ./.config
 sed -i '/TARGET_PER_DEVICE_ROOTFS/d' ./.config
 cat $GITHUB_WORKSPACE/Config/$WRT_CONFIG.txt >> .config
 
+#安装误删argon2
 ./scripts/feeds install node-argon2
