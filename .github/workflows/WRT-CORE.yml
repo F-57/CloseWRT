@@ -99,12 +99,6 @@ jobs:
 
           cd ./wrt/ && echo "WRT_HASH=$(git log -1 --pretty=format:'%h')" >> $GITHUB_ENV
 
-          # 如果不存在 defconfig 则直接结束工作流
-          if [ ! -d "defconfig" ]; then
-            echo "defconfig directory not found, stopping workflow."
-            exit 0
-          fi
-
           # GitHub Action 移除国内下载源
           PROJECT_MIRRORS_FILE="./scripts/projectsmirrors.json"
           if [ -f "$PROJECT_MIRRORS_FILE" ]; then
@@ -169,14 +163,10 @@ jobs:
         run: |
           cd ./wrt/
 
-          # find ./defconfig -type f -iname "*$WRT_CONFIG*" -exec cat {} + | sort | uniq > .config
           cp ./defconfig/mt7986-ax6000.config .config
 
           $GITHUB_WORKSPACE/Scripts/Settings.sh
-
-          cat $GITHUB_WORKSPACE/Config/GENERAL.txt >> .config
           
-
           make defconfig -j$(nproc) && make clean -j$(nproc)
 
       - name: 下载软件包
