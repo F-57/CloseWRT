@@ -41,6 +41,9 @@ echo -e "msgstr \"虚拟组网\"" >> package/luci-app-tailscale/po/zh_Hans/tails
 echo -e "\nmsgid \"Nikki\"" >> package/nikki/luci-app-nikki/po/zh_Hans/nikki.po
 echo -e "msgstr \"科学上网\"" >> package/nikki/luci-app-nikki/po/zh_Hans/nikki.po
 
+echo -e "\nmsgid \"UPnP\"" >> package/mtk/applications/luci-app-upnp-mtk-adjust/po/zh_Hans/upnp.po
+echo -e "msgstr \"即插即用\"" >> package/mtk/applications/luci-app-upnp-mtk-adjust/po/zh_Hans/upnp.po
+
 #配置文件修改
 echo "CONFIG_PACKAGE_luci=y" >> ./.config
 echo "CONFIG_LUCI_LANG_zh_Hans=y" >> ./.config
