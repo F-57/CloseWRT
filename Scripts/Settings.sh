@@ -29,6 +29,12 @@ sed -i "s/reg = <0x600000 0x6e00000>/reg = <0x600000 0x1ea00000>/g" $CFG_DTS
 echo -e "\nmsgid \"MosDNS\"" >> package/mosdns/luci-app-mosdns/po/zh_Hans/mosdns.po
 echo -e "msgstr \"转发分流\"" >> package/mosdns/luci-app-mosdns/po/zh_Hans/mosdns.po
 
+echo -e "\nmsgid \"Lucky\"" >> package/lucky/luci-app-lucky/po/zh_Hans/lucky.po
+echo -e "msgstr \"大吉大利\"" >> package/lucky/luci-app-lucky/po/zh_Hans/lucky.po
+
+echo -e "\nmsgid \"AList\"" >> package/alist/luci-app-alist/po/zh_Hans/alist.po
+echo -e "msgstr \"聚合网盘\"" >> package/alist/luci-app-alist/po/zh_Hans/alist.po
+
 #配置文件修改
 echo "CONFIG_PACKAGE_luci=y" >> ./.config
 echo "CONFIG_LUCI_LANG_zh_Hans=y" >> ./.config
