@@ -43,6 +43,9 @@ echo -e "msgstr \"科学上网\"" >> package/nikki/luci-app-nikki/po/zh_Hans/nik
 
 echo -e "\nmsgid \"UPnP\"" >> package/mtk/applications/luci-app-upnp-mtk-adjust/po/zh_Hans/upnp.po
 echo -e "msgstr \"即插即用\"" >> package/mtk/applications/luci-app-upnp-mtk-adjust/po/zh_Hans/upnp.po
+# 更改菜单
+jq 'del(.["admin/nas"])' package/alist/luci-app-alist/root/usr/share/luci/menu.d/luci-app-alist.json > temp.json && mv temp.json package/alist/luci-app-alist/root/usr/share/luci/menu.d/luci-app-alist.json
+sed -i 's/nas/services/g' package/alist/luci-app-alist/root/usr/share/luci/menu.d/luci-app-alist.json
 
 #配置文件修改
 echo "CONFIG_PACKAGE_luci=y" >> ./.config
