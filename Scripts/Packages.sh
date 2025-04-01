@@ -58,6 +58,9 @@ UPDATE_PACKAGE "mosdns" "sbwml/luci-app-mosdns" "v5" "" "v2dat"
 UPDATE_PACKAGE "airconnect" "sbwml/luci-app-airconnect" "main"
 UPDATE_PACKAGE "openwrt-my-dnshelper" "kongfl888/openwrt-my-dnshelper" "main"
 
+UPDATE_PACKAGE "viking" "VIKINGYFY/packages" "main" "" "luci-app-timewol luci-app-wolplus"
+UPDATE_PACKAGE "vnt" "lmq8267/luci-app-vnt" "main"
+
 
 #更新软件包版本
 UPDATE_VERSION() {
@@ -101,6 +104,4 @@ UPDATE_VERSION() {
 }
 
 #UPDATE_VERSION "软件包名" "测试版，true，可选，默认为否"
-
 UPDATE_VERSION "sing-box"
-UPDATE_VERSION "tailscale"
