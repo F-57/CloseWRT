@@ -32,8 +32,8 @@ echo -e "msgstr \"转发分流\"" >> package/mosdns/luci-app-mosdns/po/zh_Hans/m
 echo -e "\nmsgid \"Lucky\"" >> package/lucky/luci-app-lucky/po/zh_Hans/lucky.po
 echo -e "msgstr \"大吉大利\"" >> package/lucky/luci-app-lucky/po/zh_Hans/lucky.po
 
-echo -e "\nmsgid \"AList\"" >> package/alist/luci-app-alist/po/zh_Hans/alist.po
-echo -e "msgstr \"聚合网盘\"" >> package/alist/luci-app-alist/po/zh_Hans/alist.po
+#echo -e "\nmsgid \"AList\"" >> package/alist/luci-app-alist/po/zh_Hans/alist.po
+#echo -e "msgstr \"聚合网盘\"" >> package/alist/luci-app-alist/po/zh_Hans/alist.po
 
 echo -e "\nmsgid \"Tailscale\"" >> package/luci-app-tailscale/po/zh_Hans/tailscale.po
 echo -e "msgstr \"虚拟组网\"" >> package/luci-app-tailscale/po/zh_Hans/tailscale.po
@@ -43,9 +43,6 @@ echo -e "msgstr \"科学上网\"" >> package/nikki/luci-app-nikki/po/zh_Hans/nik
 
 echo -e "\nmsgid \"UPnP\"" >> package/mtk/applications/luci-app-upnp-mtk-adjust/po/zh_Hans/upnp.po
 echo -e "msgstr \"即插即用\"" >> package/mtk/applications/luci-app-upnp-mtk-adjust/po/zh_Hans/upnp.po
-# 更改菜单
-jq 'del(.["admin/nas"])' package/alist/luci-app-alist/root/usr/share/luci/menu.d/luci-app-alist.json > temp.json && mv temp.json package/alist/luci-app-alist/root/usr/share/luci/menu.d/luci-app-alist.json
-sed -i 's/nas/services/g' package/alist/luci-app-alist/root/usr/share/luci/menu.d/luci-app-alist.json
 
 #配置文件修改
 echo "CONFIG_PACKAGE_luci=y" >> ./.config
