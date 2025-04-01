@@ -32,8 +32,8 @@ echo -e "msgstr \"转发分流\"" >> package/luci-app-mosdns/luci-app-mosdns/po/
 echo -e "\nmsgid \"Lucky\"" >> package/luci-app-lucky/luci-app-lucky/po/zh_Hans/lucky.po
 echo -e "msgstr \"大吉大利\"" >> package/luci-app-lucky/luci-app-lucky/po/zh_Hans/lucky.po
 
-#echo -e "\nmsgid \"AList\"" >> package/alist/luci-app-alist/po/zh_Hans/alist.po
-#echo -e "msgstr \"聚合网盘\"" >> package/alist/luci-app-alist/po/zh_Hans/alist.po
+#echo -e "\nmsgid \"AList\"" >> package/luci-app-alist/luci-app-alist/po/zh_Hans/alist.po
+#echo -e "msgstr \"聚合网盘\"" >> package/luci-app-alist/luci-app-alist/po/zh_Hans/alist.po
 
 echo -e "\nmsgid \"Tailscale\"" >> package/luci-app-tailscale/po/zh_Hans/tailscale.po
 echo -e "msgstr \"虚拟组网\"" >> package/luci-app-tailscale/po/zh_Hans/tailscale.po
