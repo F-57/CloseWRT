@@ -35,6 +35,9 @@ echo -e "msgstr \"大吉大利\"" >> package/lucky/luci-app-lucky/po/zh_Hans/luc
 echo -e "\nmsgid \"AList\"" >> package/alist/luci-app-alist/po/zh_Hans/alist.po
 echo -e "msgstr \"聚合网盘\"" >> package/alist/luci-app-alist/po/zh_Hans/alist.po
 
+echo -e "\nmsgid \"Tailscale\"" >> package/luci-app-tailscale/po/zh_Hans/tailscale.po
+echo -e "msgstr \"虚拟组网\"" >> package/luci-app-tailscale/po/zh_Hans/tailscale.po
+
 #配置文件修改
 echo "CONFIG_PACKAGE_luci=y" >> ./.config
 echo "CONFIG_LUCI_LANG_zh_Hans=y" >> ./.config
