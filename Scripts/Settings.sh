@@ -38,6 +38,9 @@ echo -e "msgstr \"聚合网盘\"" >> package/alist/luci-app-alist/po/zh_Hans/ali
 echo -e "\nmsgid \"Tailscale\"" >> package/luci-app-tailscale/po/zh_Hans/tailscale.po
 echo -e "msgstr \"虚拟组网\"" >> package/luci-app-tailscale/po/zh_Hans/tailscale.po
 
+echo -e "\nmsgid \"Nikki\"" >> package/nikki/luci-app-nikki/po/zh_Hans/nikki.po
+echo -e "msgstr \"科学上网\"" >> package/nikki/luci-app-nikki/po/zh_Hans/nikki.po
+
 #配置文件修改
 echo "CONFIG_PACKAGE_luci=y" >> ./.config
 echo "CONFIG_LUCI_LANG_zh_Hans=y" >> ./.config
