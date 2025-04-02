@@ -41,6 +41,9 @@ echo -e "msgstr \"虚拟组网\"" >> package/luci-app-tailscale/po/zh_Hans/tails
 echo -e "\nmsgid \"Nikki\"" >> package/OpenWrt-nikki/luci-app-nikki/po/zh_Hans/nikki.po
 echo -e "msgstr \"科学上网\"" >> package/OpenWrt-nikki/luci-app-nikki/po/zh_Hans/nikki.po
 
+echo -e "\nmsgid \"HomeProxy\"" >> package/homeproxy/po/zh_Hans/homeproxy.po
+echo -e "msgstr \"科学代理\"" >> package/homeproxy/po/zh_Hans/homeproxy.po
+
 echo -e "\nmsgid \"UPnP\"" >> package/mtk/applications/luci-app-upnp-mtk-adjust/po/zh_Hans/upnp.po
 echo -e "msgstr \"即插即用\"" >> package/mtk/applications/luci-app-upnp-mtk-adjust/po/zh_Hans/upnp.po
 
