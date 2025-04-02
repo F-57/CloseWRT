@@ -53,7 +53,7 @@ UPDATE_PACKAGE "openclash" "vernesong/OpenClash" "dev" "pkg"
 
 UPDATE_PACKAGE "lucky" "sirpdboy/luci-app-lucky" "main"
 UPDATE_PACKAGE "luci-app-tailscale" "asvow/luci-app-tailscale" "main"
-UPDATE_PACKAGE "alist" "caiweill/luci-app-alist" "main"
+UPDATE_PACKAGE "alist" "F-57/luci-app-alist" "main"
 UPDATE_PACKAGE "mosdns" "sbwml/luci-app-mosdns" "v5" "" "v2dat"
 UPDATE_PACKAGE "airconnect" "sbwml/luci-app-airconnect" "main"
 UPDATE_PACKAGE "openwrt-my-dnshelper" "kongfl888/openwrt-my-dnshelper" "main"
